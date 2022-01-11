@@ -1,10 +1,17 @@
 import style from './style.module.css';
 import backCard from '../../assets/img/card-back-side.jpg';
+import { useState } from 'react';
 
 function PokemonCard({...props}) {
+    const [isActive, setActive] = useState(false);
+
+    const handleClick = () => {
+        setActive(true);
+    };
+
     return (
-        <div className={style.root}>
-            <div className={style.pokemonCard}>
+        <div className={style.root} onClick={handleClick}>
+            <div className={`${style.pokemonCard} ${isActive ? style.active : ''}`}>
                 <div className={style.cardFront}>
                     <div className={`${style.wrap} ${style.front}`}>
                         <div className={`${style.pokemon} ${style[props.type]}`}>
