@@ -1,6 +1,7 @@
 import style from './style.module.css';
 import backCard from '../../assets/img/card-back-side.jpg';
 import { useState } from 'react';
+import cn from 'classnames';
 
 function PokemonCard({...props}) {
     const [isActive, setActive] = useState(false);
@@ -11,15 +12,15 @@ function PokemonCard({...props}) {
 
     return (
         <div className={style.root} onClick={handleClick}>
-            <div className={`${style.pokemonCard} ${isActive ? style.active : ''}`}>
+            <div className={cn(style.pokemonCard, {[style.active]: isActive})}>
                 <div className={style.cardFront}>
-                    <div className={`${style.wrap} ${style.front}`}>
-                        <div className={`${style.pokemon} ${style[props.type]}`}>
+                    <div className={cn(style.wrap, style.front)}>
+                        <div className={cn(style.pokemon, style[props.type])}>
                             <div className={style.values}>
-                                <div className={`${style.count} ${style.top}`}>{props.values.top}</div>
-                                <div className={`${style.count} ${style.right}`}>{props.values.right}</div>
-                                <div className={`${style.count} ${style.bottom}`}>{props.values.bottom}</div>
-                                <div className={`${style.count} ${style.left}`}>{props.values.left}</div>
+                                <div className={cn(style.count, style.top)}>{props.values.top}</div>
+                                <div className={cn(style.count, style.right)}>{props.values.right}</div>
+                                <div className={cn(style.count, style.bottom)}>{props.values.bottom}</div>
+                                <div className={cn(style.count, style.left)}>{props.values.left}</div>
                             </div>
                             <div className={style.imgContainer}>
                                 <img src={props.img} alt={props.name} />
@@ -34,7 +35,7 @@ function PokemonCard({...props}) {
                 </div>
 
                 <div className={style.cardBack}>
-                    <div className={`${style.wrap} ${style.back}`}>
+                    <div className={cn(style.wrap, style.back)}>
                         <img src={backCard} alt="Сard Backed" />
                     </div>
                 </div>
