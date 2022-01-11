@@ -1,6 +1,6 @@
 import style from './style.module.css';
 
-function Layout({id, title, desc, urlBg, colorBg}) {
+function Layout({id, title, children, urlBg, colorBg}) {
     const sectionStyle = {};
     
     if (urlBg) {
@@ -19,8 +19,8 @@ function Layout({id, title, desc, urlBg, colorBg}) {
                         <h3>{title}</h3>
                         <span className={style.separator}></span>
                     </div>
-                    <div className={[style.desc, style.full]}>
-                        <p>{desc}</p>
+                    <div className={`${style.desc} ${style.full}`}>
+                        {children}
                     </div>
                 </article>
             </div>
