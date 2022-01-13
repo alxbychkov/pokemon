@@ -1,7 +1,12 @@
+import { Link } from 'react-router-dom';
 import style from './style.module.css';
 import cn from 'classnames';
 
-function Menu({isShow}) {
+function Menu({isShow, onOpenMenu}) {
+
+    const handleClick = () => {
+        onOpenMenu && onOpenMenu(false);
+    }
 
     return (
         <div className={cn(style.menuContainer, {[style.active]: isShow === true, [style.deactive]: isShow === false})}>
@@ -9,24 +14,24 @@ function Menu({isShow}) {
             <div className={style.menuItems}>
                 <ul>
                 <li>
-                    <a href="#welcome">
+                    <Link to={'/'} onClick={handleClick}>
                     HOME
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#game">
+                    <Link to={'game'} onClick={handleClick}>
                     GAME
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#about">
+                    <Link to={'about'} onClick={handleClick}>
                     ABOUT
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#contact">
+                    <Link to={'contact'} onClick={handleClick}>
                     CONTACT
-                    </a>
+                    </Link>
                 </li>
                 </ul>
             </div>

@@ -1,22 +1,19 @@
-import { useState } from 'react/cjs/react.development';
+import { Link } from 'react-router-dom';
 import style from './style.module.css';
 import cn from 'classnames';
 
-function Navbar({onOpenMenu, bgActive = false}) {
-    const [isActive, setActive] = useState(false);
-
+function Navbar({onOpenMenu, bgActive = false, isShow}) {
     const handleClick = () => {
-        setActive(!isActive);
-        onOpenMenu && onOpenMenu(!isActive);
+        onOpenMenu && onOpenMenu(!isShow);
     }
 
     return (
         <nav className={cn({[style.bgActive]: bgActive})} id={style.navbar}>
             <div className={style.navWrapper}>
-                <p className={style.brand}>
+                <Link className={style.brand} to={'/'} onClick={() => {isShow && onOpenMenu(!isShow)}}>
                 LOGO
-                </p>
-                <div className={cn(style.menuButton, {[style.active]: isActive})} onClick={handleClick}>
+                </Link>
+                <div className={cn(style.menuButton, {[style.active]: isShow})} onClick={handleClick}>
                     <span />
                 </div>
             </div>

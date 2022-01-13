@@ -6,14 +6,13 @@ function MenuHeader({bgActive}) {
     const [isActive, setActive] = useState(null);
 
     const handleOpenMenu = (isOpen) => {
-        console.log(isOpen);
         setActive(isOpen);
     }
 
     return (
         <>
-            <Menu isShow={isActive}/>
-            <Navbar onOpenMenu={handleOpenMenu} bgActive={bgActive}/>
+            <Menu isShow={isActive} onOpenMenu={handleOpenMenu}/>
+            <Navbar isShow={isActive} onOpenMenu={handleOpenMenu} bgActive={bgActive}/>
         </>
     );
 }
