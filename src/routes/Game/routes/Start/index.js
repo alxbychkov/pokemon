@@ -4,11 +4,12 @@ import style from './style.module.css';
 import { useState, useEffect, useContext } from "react";
 import { FirebaseContext } from "../../../../context/FirebaseContext";
 import { PokemonContext } from "../../../../context/pokemonContext";
+import { useHistory } from "react-router-dom";
 
 function StartPage() {
     const firebase = useContext(FirebaseContext);
     const pokemonsContext = useContext(PokemonContext);
-
+    const history = useHistory();
     const [pokemons, setPokemons] = useState({});
 
     useEffect(() => {
@@ -32,6 +33,10 @@ function StartPage() {
         }))
     }
 
+    const handleStartGameClick = () => {
+        history.push('/game/board');
+    }
+
     return (
         <>
             <Layout
@@ -40,7 +45,9 @@ function StartPage() {
                 colorBg='#e2e2e2'
             >
                 <div className={style.buttonWrap}>
-                    <button>Start Game</button>
+                    <button onClick={handleStartGameClick}
+                        disabled={Object.keys(pokemonsContext.pokemons).length < 5}
+                    >Start Game</button>
                 </div>
                 <div className={style.grid}>
                 {

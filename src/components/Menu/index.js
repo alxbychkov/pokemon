@@ -19,17 +19,17 @@ function Menu({isShow, onOpenMenu}) {
                     </Link>
                 </li>
                 <li>
-                    <Link to={'game'} onClick={handleClick}>
+                    <Link to={'/game'} onClick={handleClick}>
                     GAME
                     </Link>
                 </li>
                 <li>
-                    <Link to={'about'} onClick={handleClick}>
+                    <Link to={'/about'} onClick={handleClick}>
                     ABOUT
                     </Link>
                 </li>
                 <li>
-                    <Link to={'contact'} onClick={handleClick}>
+                    <Link to={'/contact'} onClick={handleClick}>
                     CONTACT
                     </Link>
                 </li>
